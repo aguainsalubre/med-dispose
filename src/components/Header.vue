@@ -8,11 +8,10 @@
           @click="toggleMenu"
         >
           <!-- Menu Icon -->
-          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 text-gray-700 dark:fill-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
-        
         <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
           <!-- Medical Icon -->
           <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -21,16 +20,24 @@
         </div>
       </div>
 
+      <!-- Search bar -->
+      <div class="flex-1 flex justify-center px-4">
+        <input
+          type="text"
+          placeholder="Pesquisar..."
+          class="w-full max-w-lg px-4 py-2 rounded-3xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+        />
+      </div>
+
       <!-- Right side -->
       <div class="flex items-center space-x-2">
-        <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors relative">
-          <!-- Notification Icon -->
-          <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path>
+        <button class="p-2 hover:bg-gray-700 rounded-lg transition-colors relative" @click="toggleDark">
+          <!-- Lua Icon -->
+          <svg class="w-6 h-6 text-gray-700 dark:text-gray-200" fill="yellow" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" />
           </svg>
-          <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
         </button>
-        
         <button class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
           <!-- Settings Icon -->
           <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -44,9 +51,45 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+
 const emit = defineEmits(['toggleMenu'])
 
 const toggleMenu = () => {
   emit('toggleMenu')
 }
+
+const isDark = ref(false)
+
+const toggleDark = () => {
+  // Inverte o valor
+  isDark.value = !isDark.value
+
+  // Adiciona ou remove a classe 'dark' do <html>
+  if (isDark.value) {
+    document.documentElement.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
+  } else {
+    document.documentElement.classList.remove('dark')
+    localStorage.setItem('theme', 'light')
+  }
+}
+
+// Ao carregar, verifica localStorage primeiro, depois preferência do sistema
+onMounted(() => {
+  const theme = localStorage.getItem('theme')
+  if (theme === 'dark') {
+    isDark.value = true
+    document.documentElement.classList.add('dark')
+  } else if (theme === 'light') {
+    isDark.value = false
+    document.documentElement.classList.remove('dark')
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    isDark.value = true
+    document.documentElement.classList.add('dark')
+  } else {
+    isDark.value = false
+    document.documentElement.classList.remove('dark')
+  }
+})
 </script>

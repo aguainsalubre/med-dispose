@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-50">
     <!-- Sidebar -->
-    <Sidebar 
+    <Sidebar class
       :isOpen="sidebarOpen" 
       @close="closeSidebar"
       @navigate="handleNavigation"
@@ -17,7 +17,7 @@
         <h1 class="text-2xl font-bold text-gray-900 mb-2">Olá!</h1>
       </div>
 
-      <!-- Recent Hospitals Section -->
+<!-- Recent Hospitals Section -->
       <RecentHospitals />
 
       <!-- Expiring Medications Section -->

@@ -1,7 +1,7 @@
 <template>
   <section class="mb-8">
     <div class="flex items-center justify-between mb-4">
-      <h2 class="text-lg font-semibold text-gray-900">Hospitais recentes</h2>
+      <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Hospitais recentes</h2>
       <button class="text-blue-600 hover:text-blue-700 transition-colors">
         <!-- Arrow Right Icon -->
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -38,42 +38,32 @@ const hospitals = ref([
     name: 'Unimed Sul Mineira',
     shortName: 'Unimed Sul Mineira',
     color: 'bg-green-600',
-    logo: 'U'
+    logo: 'U',
+    image: '/images/unimed sul mineira.png'
   },
   {
     id: 3,
     name: 'Unimed Itajubá',
     shortName: 'Unimed Itajubá',
     color: 'bg-green-600',
-    logo: 'U'
+    logo: 'U',
+    image: '/images/unimed itajuba.png'
   },
   {
     id: 4,
     name: 'Hospital Renascentista',
     shortName: 'Hospital Renascentista',
     color: 'bg-blue-500',
-    logo: 'R'
+    logo: 'R',
+    image: '/images/renacentista.png'
   },
   {
     id: 5,
-    name: 'Hospital e Maternidade',
+    name: 'Hospital e Maternidade Santa Paula',
     shortName: 'Hospital e Maternidade...',
     color: 'bg-green-700',
-    logo: 'M'
-  },
-  {
-    id: 6,
-    name: 'Hospital Central',
-    shortName: 'Hospital',
-    color: 'bg-blue-600',
-    logo: 'H'
-  },
-  {
-    id: 7,
-    name: 'Hospital Regional',
-    shortName: 'Hospital',
-    color: 'bg-gray-700',
-    logo: 'H'
+    logo: 'M',
+    image: '/images/santa paula.png'
   }
 ])
 </script>
