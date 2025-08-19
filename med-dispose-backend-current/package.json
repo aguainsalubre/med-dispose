@@ -1,10 +1,10 @@
 {
   "name": "med-dispose-backend",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "../med-dispose-current/server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js",
+    "start": "node ../med-dispose-current/server.js",
+    "dev": "nodemon ../med-dispose-current/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
